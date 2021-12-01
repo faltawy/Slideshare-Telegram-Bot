@@ -27,10 +27,14 @@ def error_handler(update: object, context: CallbackContext) -> None:
 # ____Bot Functions_______________________________________
 
 
+meme_photo = open('photos/meme.jpg', 'rb')
+slide_photo = open('photos//slideshare.jpg', 'rb')
+
+
 def start(update: Update, context: CallbackContext):
-    photo = open('photos//slideshare.jpg', 'rb')
+
     update.message.reply_photo(
-        photo, caption='ابعت اللينك يا برو واستنى العظمة')
+        slide_photo, caption='ابعت اللينك يا برو واستنى العظمة')
     update.message.reply_text("""Make Sure That The link in this form 
     https://www.slideshare.net/victorhernandez9/mobile-me-programming-for-wearables""")
 
@@ -39,24 +43,29 @@ def download_slides(update: Update, context: CallbackContext):
     slideshare = SlideShare()
     message_link = update.message.text
     validated_link = slideshare.valid_link(message_link.strip())
+
     if validated_link:
         slides_data = slideshare.slides(message_link)
-        photos = slides_data.get('slides')
-        update.message.reply_text(f"""
+        if slides_data is not None:
+            photos = slides_data.get('slides')
+            update.message.reply_text(f"""
 
-        Title : {slides_data.get('title')}
+            Title : {slides_data.get('title')}
 
-        instructor : {slides_data.get('author')}
+            instructor : {slides_data.get('author')}
 
-        Slides:{slides_data.get('count')}
+            Slides:{slides_data.get('count')}
 
-        *** Due To Server Limitations The Slides Will Be Sent as Photos ***
-        """)
-        for i, photo in enumerate(photos):
-            update.message.reply_photo(
-                photo, caption=f'{slides_data.get("title")} - {i+1}')
+            ** Due To Server Limitations The Slides Will Be Sent as Photos
+            """)
+            for i, photo in enumerate(photos):
+                update.message.reply_photo(
+                    photo, caption=f'{slides_data.get("title")} - {i+1}')
+        else:
+            update.message.reply_photo(meme_photo, caption='اللينك دا مش شغال')
+
     else:
-        meme_photo = open('photos/meme.jpg', 'rb')
+
         update.message.reply_photo(meme_photo, caption='اللينك دا مش شغال')
 # ________________________________________________________
 
