@@ -56,7 +56,8 @@ def download_slides(update: Update, context: CallbackContext):
             update.message.reply_photo(
                 photo, caption=f'{slides_data.get("title")} - {i+1}')
     else:
-        update.message.reply_text('اللينك دا مش شغال')
+        meme_photo = open('photos/meme.jpg', 'rb')
+        update.message.reply_photo(meme_photo, caption='اللينك دا مش شغال')
 # ________________________________________________________
 
 
