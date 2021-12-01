@@ -54,7 +54,7 @@ def download_slides(update: Update, context: CallbackContext):
         """)
         for i, photo in enumerate(photos):
             update.message.reply_photo(
-                photo, caption=f'{slides_data.get("title")} - {i}')
+                photo, caption=f'{slides_data.get("title")} - {i+1}')
     else:
         update.message.reply_text('اللينك دا مش شغال')
 # ________________________________________________________
