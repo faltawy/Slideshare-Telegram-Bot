@@ -1,6 +1,7 @@
+__version__ = '0.0.1'
+__author__ = 'Ahmed Hassan'
 import traceback
 import logging
-import os
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 from telegram import Update
 from wrapper import SlideShare, regex
@@ -51,13 +52,13 @@ def download_slides(update: Update, context: CallbackContext):
             photos = slides_data.get('slides')
             message.reply_text(f"""
 
-            Title : {slides_data.get('title')}
+        Title : {slides_data.get('title')}
 
-            instructor : {slides_data.get('author')}
+        instructor : {slides_data.get('author')}
 
-            Slides:{slides_data.get('count')}
+        Slides:{slides_data.get('count')}
 
-            ** Due To Server Limitations The Slides Will Be Sent as Photos
+        ** Due To Server Limitations The Slides Will Be Sent as Photos
             """)
             for i, photo in enumerate(photos):
                 update.message.reply_photo(
