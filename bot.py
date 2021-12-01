@@ -41,14 +41,15 @@ def start(update: Update, context: CallbackContext):
 
 def download_slides(update: Update, context: CallbackContext):
     slideshare = SlideShare()
-    message_link = update.message.text
+    message = update.message
+    message_link = message.text
     validated_link = slideshare.valid_link(message_link.strip())
 
     if validated_link:
         slides_data = slideshare.slides(message_link)
         if slides_data is not None:
             photos = slides_data.get('slides')
-            update.message.reply_text(f"""
+            message.reply_text(f"""
 
             Title : {slides_data.get('title')}
 
@@ -62,11 +63,11 @@ def download_slides(update: Update, context: CallbackContext):
                 update.message.reply_photo(
                     photo, caption=f'{slides_data.get("title")} - {i+1}')
         else:
-            update.message.reply_photo(meme_photo, caption='اللينك دا مش شغال')
+            message.reply_photo(meme_photo, caption='اللينك دا مش شغال')
 
     else:
 
-        update.message.reply_photo(meme_photo, caption='اللينك دا مش شغال')
+        message.reply_photo(meme_photo, caption='اللينك دا مش شغال')
 # ________________________________________________________
 
 
