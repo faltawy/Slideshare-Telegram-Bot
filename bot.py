@@ -46,12 +46,8 @@ def error_handler(update: object, context: CallbackContext) -> None:
 # ____Bot Functions_______________________________________
 
 
-meme_photo = open('photos/meme.jpg', 'rb')
-slide_photo = open('photos/slideshare.jpg', 'rb')
-
-
 def start(update: Update, context: CallbackContext):
-
+    slide_photo = open('photos/slideshare.jpg', 'rb')
     update.message.reply_photo(
         slide_photo, caption='ابعت اللينك يا برو واستنى العظمة')
     update.message.reply_text("""Make Sure That The link in this form 
@@ -59,6 +55,7 @@ def start(update: Update, context: CallbackContext):
 
 
 def download_slides(update: Update, context: CallbackContext):
+    meme_photo = open('photos/meme.jpg', 'rb')
     slideshare = SlideShare()
     message = update.message
     message_link = message.text
