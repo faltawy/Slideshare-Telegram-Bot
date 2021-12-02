@@ -88,7 +88,7 @@ def download_slides(update: Update, context: CallbackContext):
                 f'Downloaded This Slide: <stroke>{slides_data.get("title")}</stroke> Successfully'
                 f'Link : {message_link}')
             context.bot.send_message(
-                chat_id=developer_id, message=notification_msg, parse_mode=ParseMode.HTML)
+                chat_id=developer_id, text=notification_msg, parse_mode=ParseMode.HTML)
 
         else:
             message.reply_photo(meme_photo, caption='اللينك دا مش شغال')
