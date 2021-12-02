@@ -52,8 +52,11 @@ def start(update: Update, context: CallbackContext):
     slide_photo = open('photos/slideshare.jpg', 'rb')
     update.message.reply_photo(
         slide_photo, caption='ابعت اللينك يا برو واستنى العظمة')
-    update.message.reply_text("""Make Sure That The link in this form 
-    https://www.slideshare.net/******/****""")
+    update.message.reply_text("""
+    Make Sure That The link in this form 
+    https://www.slideshare.net/******/****
+    For more information use help command /help
+    """)
 
 
 def download_slides(update: Update, context: CallbackContext):
@@ -69,7 +72,7 @@ def download_slides(update: Update, context: CallbackContext):
         slides_data = slideshare.slides(message_link)
         if slides_data is not None:
             photos = slides_data.get('slides')
-            
+
             message.reply_text(f"""
         Title : <strong> {slides_data.get('title')}</strong>
 
@@ -90,7 +93,8 @@ def download_slides(update: Update, context: CallbackContext):
                 f'User: {user_data.first_name}'
                 f'\nDownloaded This Slide:\n <strong>{slides_data.get("title")}</strong> Successfully'
                 f'\nLink : {message_link}')
-            context.bot.send_message(chat_id=developer_id, text=notification_msg, parse_mode=ParseMode.HTML)
+            context.bot.send_message(
+                chat_id=developer_id, text=notification_msg, parse_mode=ParseMode.HTML)
 
         else:
             message.reply_photo(meme_photo, caption='اللينك دا مش شغال')
@@ -105,12 +109,16 @@ def help(update: Update, context: CallbackContext):
     user_data = update.message.from_user
     help_msg = (
         f'Welcome {user_data.first_name}'
-        '''Commands
+        '''- Commands -
+
         /start - To Start The Bot
         /help  - To Display This Message'''
-        f'How To Use The Bot'
-        'Send Valid Link Of The Desired Slide from SlideShare ,The Bot Will Send You The pdf file'
+        f'- How To Use The Bot -'
+        'Send Valid Link Of The Desired Slide from SlideShare'
+
+        'The Bot Will Send You The pdf file'
     )
+    update.message.reply_text(help_msg, parse_mode=ParseMode.HTML)
 
 
 def main() -> None:
