@@ -77,7 +77,6 @@ def download_slides(update: Update, context: CallbackContext):
 
         Slides:{slides_data.get('count')}
 
-        ** Due To Server Limitations The Slides Will Be Sent as Photos
             """)
 
             # for i, photo in enumerate(photos):
@@ -86,13 +85,13 @@ def download_slides(update: Update, context: CallbackContext):
 
             photos_data = [get(_).content for _ in photos]
             pdf_data = img2pdf.convert(photos_data)
-            update.message.reply_document(pdf_data,caption=slides_data.get('title'))
-            
+            update.message.reply_document(pdf_data, caption=slides_data.get(
+                'title'), filename=f'{slides_data.get("title")}.pdf')
 
             notification_msg = (
                 f'User:\n {user_data.first_name}'
-                f'Downloaded This Slide:\n <strong>{slides_data.get("title")}</strong> Successfully'
-                f'Link : {message_link}')
+                f'\nDownloaded This Slide:\n <strong>{slides_data.get("title")}</strong> Successfully'
+                f'\nLink : {message_link}')
             context.bot.send_message(
                 chat_id=developer_id, text=notification_msg, parse_mode=ParseMode.HTML)
 
