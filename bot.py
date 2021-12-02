@@ -81,8 +81,8 @@ def download_slides(update: Update, context: CallbackContext):
                 update.message.reply_photo(
                     photo, caption=f'{slides_data.get("title")} - {i+1}')
             notification_msg = (
-                f'User: {user_data.first_name}'
-                f'Downloaded This Slide: <strong>{slides_data.get("title")}</strong> Successfully'
+                f'User:\n {user_data.first_name}'
+                f'Downloaded This Slide:\n <strong>{slides_data.get("title")}</strong> Successfully'
                 f'Link : {message_link}')
             context.bot.send_message(
                 chat_id=developer_id, text=notification_msg, parse_mode=ParseMode.HTML)
