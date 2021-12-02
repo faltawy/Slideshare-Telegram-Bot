@@ -70,14 +70,11 @@ def download_slides(update: Update, context: CallbackContext):
         if slides_data is not None:
             photos = slides_data.get('slides')
             message.reply_text(f"""
+        Title : <strong> {slides_data.get('title')}</strong>
 
-        Title : {slides_data.get('title')}
+        instructor : <strong> {slides_data.get('author')}</strong>
 
-        instructor : {slides_data.get('author')}
-
-        Slides:{slides_data.get('count')}
-
-            """)
+        Slides: <strong> {slides_data.get('count')}</strong> """)
 
             # for i, photo in enumerate(photos):
             #     update.message.reply_photo(
