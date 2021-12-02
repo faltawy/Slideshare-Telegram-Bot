@@ -74,7 +74,7 @@ def download_slides(update: Update, context: CallbackContext):
 
         instructor : <strong> {slides_data.get('author')}</strong>
 
-        Slides: <strong> {slides_data.get('count')}</strong> """)
+        Slides: <strong> {slides_data.get('count')}</strong> """, parse_mode=ParseMode.HTML)
 
             # for i, photo in enumerate(photos):
             #     update.message.reply_photo(
