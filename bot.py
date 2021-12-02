@@ -5,9 +5,8 @@ __author__ = 'Ahmed Hassan'
 import traceback
 import logging
 import os
-from requests import get
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
-from telegram import Update, ParseMode, InputMediaPhoto
+from telegram import Update, ParseMode
 from wrapper import SlideShare, regex
 from dotenv import dotenv_values
 config = dotenv_values(".env")
@@ -79,15 +78,9 @@ def download_slides(update: Update, context: CallbackContext):
         ** Due To Server Limitations The Slides Will Be Sent as Photos
             """)
 
-            # for i, photo in enumerate(photos):
-            #     update.message.reply_photo(
-            #         photo, caption=f'{slides_data.get("title")} - {i+1}')
-            group_images = []
-            for photo in photos:
-                mediaphoto = InputMediaPhoto(get(photo).content)
-                group_images.append(mediaphoto)
-            context.bot.sendMediaGroup(
-                chat_id=update.effective_chat.id, media=group_images)
+            for i, photo in enumerate(photos):
+                update.message.reply_photo(
+                    photo, caption=f'{slides_data.get("title")} - {i+1}')
 
             notification_msg = (
                 f'User:\n {user_data.first_name}'
