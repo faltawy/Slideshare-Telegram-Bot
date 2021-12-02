@@ -110,10 +110,9 @@ def help(update: Update, context: CallbackContext):
     help_msg = (
         f'Welcome {user_data.first_name}'
         '''- Commands -
-
         /start - To Start The Bot
-        /help  - To Display This Message'''
-        f'- How To Use The Bot -'
+        /help  - To Display This Message\n'''
+        f'- How To Use The Bot -\n'
         'Send Valid Link Of The Desired Slide from SlideShare'
 
         'The Bot Will Send You The pdf file'
