@@ -2,3 +2,4 @@ requests
 bs4
 python-telegram-bot
 python-dotenv
+img2pdf

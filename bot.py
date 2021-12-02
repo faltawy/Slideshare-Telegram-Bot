@@ -4,16 +4,18 @@ __version__ = '0.0.1'
 __author__ = 'Ahmed Hassan'
 import traceback
 import logging
+import img2pdf
 import os
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 from telegram import Update, ParseMode
 from wrapper import SlideShare, regex
 from dotenv import dotenv_values
+from requests import get
 config = dotenv_values(".env")
 token = config.get('token', os.environ.get('token'))
 developer_id = config.get('developer_id', os.environ.get('developer_id'))
 
-
+BASE_DIR = os.path.dirname(__file__)
 logger = logging.getLogger(__name__)
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -78,9 +80,14 @@ def download_slides(update: Update, context: CallbackContext):
         ** Due To Server Limitations The Slides Will Be Sent as Photos
             """)
 
-            for i, photo in enumerate(photos):
-                update.message.reply_photo(
-                    photo, caption=f'{slides_data.get("title")} - {i+1}')
+            # for i, photo in enumerate(photos):
+            #     update.message.reply_photo(
+            #         photo, caption=f'{slides_data.get("title")} - {i+1}')
+
+            photos_data = [get(_).content for _ in photos]
+            pdf_data = img2pdf.convert(photos_data)
+            update.message.reply_document(pdf_data,caption=slides_data.get('title'))
+            
 
             notification_msg = (
                 f'User:\n {user_data.first_name}'
