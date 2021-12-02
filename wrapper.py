@@ -13,7 +13,7 @@ class SlideShare:
 
     def valid_link(self, link: str) -> bool:
         compiled_regex = re.compile(regex)
-        
+
         if not isinstance(link, str):
             raise LinkNotValid('The Link Must Be str. not int. typo')
         else:
@@ -28,10 +28,13 @@ class SlideShare:
         if s.ok:
             soup = BeautifulSoup(s.content, features='html.parser')
             title = soup.title.text
-            author = soup.find('a', class_='j-author-name').find('span',
-                                                                {'itemprop': 'name'}).text.strip()
-            slides_imgs = soup.find(
-                'div', {'id': 'slide_container'}).find_all('img')
+            try:
+                author = soup.find('a', class_='j-author-name').find('span',
+                                                                     {'itemprop': 'name'}).text.strip()
+                slides_imgs = soup.find(
+                    'div', {'id': 'slide_container'}).find_all('img')
+            except:
+                return None
             slides_list = list()
             for slide_img in slides_imgs:
                 src = slide_img.get('src')
@@ -41,3 +44,4 @@ class SlideShare:
             return {'author': author, 'title': title, 'count': len(slides_list), 'slides': slides_list}
         else:
             return None
+# SlideShare Search Soon https://www.slideshare.net/search/slideshow?q={Search Term}&page={Pages}
