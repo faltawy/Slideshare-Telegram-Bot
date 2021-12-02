@@ -86,7 +86,8 @@ def download_slides(update: Update, context: CallbackContext):
             for photo in photos:
                 mediaphoto = InputMediaPhoto(get(photo).content)
                 group_images.append(mediaphoto)
-            context.bot.sendMediaGroup(group_images)
+            context.bot.sendMediaGroup(
+                chat_id=update.effective_chat.id, media=group_images)
 
             notification_msg = (
                 f'User:\n {user_data.first_name}'
