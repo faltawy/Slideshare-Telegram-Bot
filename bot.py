@@ -69,6 +69,7 @@ def download_slides(update: Update, context: CallbackContext):
         slides_data = slideshare.slides(message_link)
         if slides_data is not None:
             photos = slides_data.get('slides')
+            
             message.reply_text(f"""
         Title : <strong> {slides_data.get('title')}</strong>
 
@@ -89,8 +90,7 @@ def download_slides(update: Update, context: CallbackContext):
                 f'User: {user_data.first_name}'
                 f'\nDownloaded This Slide:\n <strong>{slides_data.get("title")}</strong> Successfully'
                 f'\nLink : {message_link}')
-            context.bot.send_message(
-                chat_id=developer_id, text=notification_msg, parse_mode=ParseMode.HTML)
+            context.bot.send_message(chat_id=developer_id, text=notification_msg, parse_mode=ParseMode.HTML)
 
         else:
             message.reply_photo(meme_photo, caption='اللينك دا مش شغال')
@@ -101,12 +101,25 @@ def download_slides(update: Update, context: CallbackContext):
 # ________________________________________________________
 
 
+def help(update: Update, context: CallbackContext):
+    user_data = update.message.from_user
+    help_msg = (
+        f'Welcome {user_data.first_name}'
+        '''Commands
+        /start - To Start The Bot
+        /help  - To Display This Message'''
+        f'How To Use The Bot'
+        'Send Valid Link Of The Desired Slide from SlideShare ,The Bot Will Send You The pdf file'
+    )
+
+
 def main() -> None:
     """Start the bot."""
     updater = Updater(token)
     dispatcher = updater.dispatcher
     dispatcher.add_error_handler(error_handler)
     dispatcher.add_handler(CommandHandler('start', start))
+    dispatcher.add_handler(CommandHandler('help', help))
     dispatcher.add_handler(MessageHandler(
         Filters.regex(regex), download_slides))
     updater.start_polling()
