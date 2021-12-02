@@ -4,13 +4,16 @@ __version__ = '0.0.1'
 __author__ = 'Ahmed Hassan'
 import traceback
 import logging
+import os
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 from telegram import Update, ParseMode
 from wrapper import SlideShare, regex
 from dotenv import dotenv_values
 config = dotenv_values(".env")
-token = config.get('token')
-developer_id = config.get('developer_id')
+token = config.get('token', os.environ.get('token'))
+developer_id = config.get('developer_id', os.environ.get('developer_id'))
+
+
 logger = logging.getLogger(__name__)
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
