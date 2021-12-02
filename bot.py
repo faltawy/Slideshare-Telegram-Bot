@@ -86,7 +86,7 @@ def download_slides(update: Update, context: CallbackContext):
                 'title'), filename=f'{slides_data.get("title")}.pdf')
 
             notification_msg = (
-                f'User:\n {user_data.first_name}'
+                f'User: {user_data.first_name}'
                 f'\nDownloaded This Slide:\n <strong>{slides_data.get("title")}</strong> Successfully'
                 f'\nLink : {message_link}')
             context.bot.send_message(
