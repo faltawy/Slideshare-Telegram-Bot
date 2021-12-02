@@ -47,7 +47,7 @@ def error_handler(update: object, context: CallbackContext) -> None:
 
 
 meme_photo = open('photos/meme.jpg', 'rb')
-slide_photo = open('photos//slideshare.jpg', 'rb')
+slide_photo = open('photos/slideshare.jpg', 'rb')
 
 
 def start(update: Update, context: CallbackContext):
@@ -55,7 +55,7 @@ def start(update: Update, context: CallbackContext):
     update.message.reply_photo(
         slide_photo, caption='ابعت اللينك يا برو واستنى العظمة')
     update.message.reply_text("""Make Sure That The link in this form 
-    https://www.slideshare.net/*************/**********""")
+    https://www.slideshare.net/******/****""")
 
 
 def download_slides(update: Update, context: CallbackContext):
