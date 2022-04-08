@@ -8,6 +8,7 @@ from dataclasses import dataclass
 class Slide:
     index:int
     url:str
+
 regex = "^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]slideshare+)\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$"
 
 async def valid_link(link: str) -> bool:
@@ -32,10 +33,13 @@ class SlideShare:
 
     async def __soup(self,url:str)-> BeautifulSoup:
         async with self.session.get(url) as resp:
-            assert resp.ok
-        soup = BeautifulSoup(await resp.text('utf-8'),'html.parser')
+            data = await resp.text('utf-8')
+        soup = BeautifulSoup(data,'html.parser')
         return soup
     
+    async def download(self,url:str,slide:Slide):
+        async with self.session.get(url) as data:
+            pass
 
     async def slides(self, url: str):
         soup =await self.__soup(url)  # type: ignore
@@ -44,11 +48,9 @@ class SlideShare:
         slides_mcp = soup.find('div', {'id': 'slide-container'}).find_all('img')  # type: ignore
         slides_list = []
         for slide_img in slides_mcp:
-            print('fuck')
             src = slide_img.get('src')
             if len(src) <= 0:
                 src = slide_img.get('data-original')
             index = int(slide_img.get('data-index'))
             slides_list.append(Slide(index=index,url=src))
-        print('fuckkkkkkkkkkk')
         return Slides(author=author,title=title,slides=slides_list)

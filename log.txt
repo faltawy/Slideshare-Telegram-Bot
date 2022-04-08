@@ -46,3 +46,15 @@ INFO:asyncio:[*] bot started
 ERROR:TeleBot:Unkown error: TimeoutError
 ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001A3F0FFE6A0> files=None request_timeout=20
 WARNING:asyncio:[*] bot stopped
+INFO:asyncio:[*] bot started
+ERROR:root:Connection closed
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001A9A3225048> files=None request_timeout=20
+INFO:asyncio:[*] bot started
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000247959046D8>
+ERROR:asyncio:Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x0000024795845868>, 6510.937)]']
+connector: <aiohttp.connector.TCPConnector object at 0x0000024795904C18>
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x00000247964A5828> files=None request_timeout=20

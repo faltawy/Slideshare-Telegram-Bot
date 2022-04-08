@@ -15,6 +15,7 @@ logging.basicConfig(filename=os.path.join(BASE_DIR,'log.txt'),level=logging.INFO
 TOKEN = str(os.getenv('token'))
 bot = AsyncTeleBot(TOKEN)
 
+STORAGE = os.path.join(BASE_DIR,'storage')
 @bot.message_handler(commands=['help', 'start'])
 async def send_welcome(message):
     await bot.reply_to(message, """\
@@ -26,8 +27,8 @@ async def send_welcome(message):
 async def handle_msg(msg:Message):
     print(msg.text)
     sh = SlideShare()
-    d  = await sh.slides(msg.text)  # type: ignore
-    print(d)
+    data  = await sh.slides(msg.text)  # type: ignore
+
 
 if __name__ == '__main__':
     logger.info('[*] bot started')
