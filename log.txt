@@ -1,0 +1,48 @@
+ERROR:TeleBot:Unkown error: TimeoutError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001EA2F6CFBA8> files=None request_timeout=20
+ERROR:TeleBot:Unkown error: TimeoutError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001EA2F722BA8> files=None request_timeout=20
+ERROR:TeleBot:Unkown error: TimeoutError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001EA2F6BFE80> files=None request_timeout=20
+ERROR:TeleBot:Unkown error: TimeoutError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001EA2F6CFEF0> files=None request_timeout=20
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001EA2F722978> files=None request_timeout=20
+ERROR:TeleBot:Unkown error: TimeoutError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x00000265E4560A20> files=None request_timeout=20
+WARNING:__main__:[0] BOT has stopped !
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x0000024772B66208> files=None request_timeout=20
+INFO:asyncio:[*] bot started
+ERROR:root:
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000002A42F17B5F8> files=None request_timeout=20
+INFO:asyncio:[*] bot started
+ERROR:root:
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x0000021A6327B860> files=None request_timeout=20
+INFO:asyncio:[*] bot started
+ERROR:root:
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001E2FC6E7D68> files=None request_timeout=20
+INFO:asyncio:[*] bot started
+INFO:asyncio:[*] bot started
+ERROR:root:
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001DAA671E588> files=None request_timeout=20
+INFO:asyncio:[*] bot started
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001E1D6395550> files=None request_timeout=20
+INFO:asyncio:[*] bot started
+ERROR:root:
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x0000021A89205E10> files=None request_timeout=20
+INFO:asyncio:[*] bot started
+ERROR:root:
+ERROR:TeleBot:Unkown error: CancelledError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x0000024E33CFCAC8> files=None request_timeout=20
+ERROR:root:
+INFO:asyncio:[*] bot started
+ERROR:TeleBot:Unkown error: TimeoutError
+ERROR:TeleBot:Request timeout. Request: method=get url=getUpdates params=<aiohttp.formdata.FormData object at 0x000001A3F0FFE6A0> files=None request_timeout=20
+WARNING:asyncio:[*] bot stopped
